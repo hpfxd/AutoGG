@@ -101,13 +101,13 @@ public class AutoGGHandler {
         if (server != null) {
             String prefix = server.getMessagePrefix();
 
-            String ggMessage = AutoGG.INSTANCE.getPrimaryGGStrings()[AutoGG.INSTANCE.getAutoGGConfig().getAutoGGPhrase()];
+            String ggMessage = AutoGG.INSTANCE.getAutoGGConfig().getAutoGGPhrase();
             int delay = AutoGG.INSTANCE.getAutoGGConfig().getAutoGGDelay();
 
             Multithreading.schedule(() -> Minecraft.getMinecraft().thePlayer.sendChatMessage(prefix.isEmpty() ? ggMessage : prefix + " " + ggMessage), delay, TimeUnit.SECONDS);
 
             if (AutoGG.INSTANCE.getAutoGGConfig().isSecondaryEnabled()) {
-                String secondGGMessage = AutoGG.INSTANCE.getSecondaryGGStrings()[AutoGG.INSTANCE.getAutoGGConfig().getAutoGGPhrase2()];
+                String secondGGMessage = AutoGG.INSTANCE.getAutoGGConfig().getAutoGGPhrase2();
                 int secondaryDelay = AutoGG.INSTANCE.getAutoGGConfig().getSecondaryDelay();
 
                 Multithreading.schedule(() -> Minecraft.getMinecraft().thePlayer.sendChatMessage(prefix.isEmpty() ? ggMessage : prefix + " " + secondGGMessage), secondaryDelay, TimeUnit.SECONDS);
