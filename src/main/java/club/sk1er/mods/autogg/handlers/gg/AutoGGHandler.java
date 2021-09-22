@@ -23,6 +23,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class AutoGGHandler {
     private volatile Server server;
+    private long lastGG = 0;
 
     @SubscribeEvent
     public void onEntityJoinWorld(EntityJoinWorldEvent event) {
@@ -47,6 +48,7 @@ public class AutoGGHandler {
 
     @SubscribeEvent
     public void onClientChatReceived(ClientChatReceivedEvent event) {
+        if (event.type == 2) return;
         String stripped = EnumChatFormatting.getTextWithoutFormattingCodes(event.message.getUnformattedText());
 
         if (AutoGG.INSTANCE.getAutoGGConfig().isModEnabled() && server != null) {
@@ -100,8 +102,10 @@ public class AutoGGHandler {
         // Better safe than sorry
         if (server != null) {
             String prefix = server.getMessagePrefix();
-
             String ggMessage = AutoGG.INSTANCE.getAutoGGConfig().getAutoGGPhrase();
+            if (System.currentTimeMillis() - lastGG < 10_000) return;
+            lastGG = System.currentTimeMillis();
+
             int delay = AutoGG.INSTANCE.getAutoGGConfig().getAutoGGDelay();
 
             Multithreading.schedule(() -> Minecraft.getMinecraft().thePlayer.sendChatMessage(prefix.isEmpty() ? ggMessage : prefix + " " + ggMessage), delay, TimeUnit.SECONDS);
