@@ -110,7 +110,7 @@ preprocess {
     vars.put("VANILLA", VANILLA ? 1 : 0)
 }
 
-version = this.properties.getOrDefault("BUILD_ID", "LOCAL") //BUILD_ID
+version = this.properties.getOrDefault("BUILD_ID", "LOCAL") + "-hpfxd" //BUILD_ID
 group = "club.sk1er"
 archivesBaseName = modBaseName + " " + project.name
 
