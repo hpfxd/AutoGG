@@ -42,14 +42,14 @@ import java.util.*;
  *
  * @author ChachyDev
  */
-@Mod(modid = "autogg", name = "AutoGG", version = "4.1.1")
+@Mod(modid = "autogg", name = "AutoGG", version = "4.1.3")
 public class AutoGG {
 
     @Mod.Instance
     public static AutoGG INSTANCE;
 
     private final String[] primaryGGStrings = {"gg", "GG", "gf", "Good Game", "Good Fight", "Good Round! :D"};
-    private final String[] secondaryGGStrings = {"Have a good day!", "<3", "AutoGG By Sk1er!"};
+    private final String[] secondaryGGStrings = {"Have a good day!", "<3", "AutoGG By Sk1er!", "gf", "Good Fight", "Good Round", ":D", "Well played!", "wp"};
     private TriggersSchema triggers;
     private AutoGGConfig autoGGConfig;
 
